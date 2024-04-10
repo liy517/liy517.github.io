@@ -1,0 +1,169 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.8.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.8.0" type="image/png" sizes="32x32"><meta name="description" content="在软路由安装PVE虚拟机，并在虚拟机中安装WIN10、ROS、homeassistant、openwrt等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PVE虚拟主机 ALL In One">
+<meta property="og:url" content="https://liy517.github.io/2024/04/10/%E8%BD%AF%E8%B7%AF%E7%94%B1/index.html">
+<meta property="og:site_name" content="子易的博客">
+<meta property="og:description" content="在软路由安装PVE虚拟机，并在虚拟机中安装WIN10、ROS、homeassistant、openwrt等">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/04/10/FWviHqV5tDImk7A.png">
+<meta property="og:image" content="https://s2.loli.net/2024/04/10/bOZh84eSkfoNmJw.png">
+<meta property="og:image" content="https://s2.loli.net/2024/04/10/wMs3aGAyXEQW2Cm.png">
+<meta property="og:image" content="https://s2.loli.net/2024/04/10/EVoGy8IjvaHXW9g.png">
+<meta property="og:image" content="https://s2.loli.net/2024/04/10/mPALZH9DsVWndO8.png">
+<meta property="og:image" content="https://s2.loli.net/2024/04/10/9LP1MVxQZzAaHNt.png">
+<meta property="og:image" content="https://s2.loli.net/2024/04/10/pA2aKf9tGni58EL.jpg">
+<meta property="og:image" content="https://s2.loli.net/2024/04/10/bxSguTAaIZofejd.png">
+<meta property="og:image" content="https://s2.loli.net/2024/04/10/9e14MU5EkZoQRzr.png">
+<meta property="article:published_time" content="2024-04-10T13:03:51.000Z">
+<meta property="article:modified_time" content="2024-04-10T15:20:15.174Z">
+<meta property="article:author" content="Yong">
+<meta property="article:tag" content="软路由">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/04/10/FWviHqV5tDImk7A.png"><title>PVE虚拟主机 ALL In One | 子易的博客</title><link ref="canonical" href="https://liy517.github.io/2024/04/10/%E8%BD%AF%E8%B7%AF%E7%94%B1/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/routing/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">软路由</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">子易的博客</div><div class="header-banner-info__subtitle">爱折腾的人</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">PVE虚拟主机 ALL In One</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2024-04-10</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2024-04-10</span></span></div></header><div class="post-body"><p>在软路由安装PVE虚拟机，并在虚拟机中安装WIN10、ROS、homeassistant、openwrt等</p>
+<span id="more"></span>
+
+
+        <h1 id="一、安装WIN10"   >
+          <a href="#一、安装WIN10" class="heading-link"><i class="fas fa-link"></i></a><a href="#一、安装WIN10" class="headerlink" title="一、安装WIN10"></a>一、安装WIN10</h1>
+      <p>1、下载WIN的IOS镜像文件、虚拟光驱virtio-win的IOS镜像文件；</p>
+<p>2、将以上两个镜像文件上传到PVE储存</p>
+<p>3、创建虚拟机，创建过程中的CD选择WIN10镜像文件，</p>
+<p> BIOS中，如果时WIN10选择BIOS，如果是WIN11选择WEFI，并且要勾上TPM，硬盘选scsi性能会更好一点，CPU的类别选择host</p>
+<p>创建好后，新建CD&#x2F;DVD设备，上传virtio，然后再控制台开机。</p>
+<p>4、如果识别不到硬盘，点击左下角加载驱动程序，浏览，选virtio的光盘，下拉找到VIOSCSI文件夹打开，选择W10下的amd64文件夹确定即可。</p>
+<p>5、安装完成后的网络问题解决：</p>
+<p>  打开“我的电脑”进入virtio驱动光盘，找到virtio的安装程序，双击，一路下一步</p>
+
+        <h1 id="二、安装ROS"   >
+          <a href="#二、安装ROS" class="heading-link"><i class="fas fa-link"></i></a><a href="#二、安装ROS" class="headerlink" title="二、安装ROS"></a>二、安装ROS</h1>
+      <p>1、下载地址：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://mikrotik.com/download" >MikroTik Routers and Wireless - Software</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>2、下载CHR版本（Cloud Hosted Router）</p>
+<p>3、将下载的IMG文件上传到PVE的IOS镜像，上传完成后，复制保存路径，在shell里输入</p>
+<p>  qm importdisk 104 &#x2F;var&#x2F;lib&#x2F;vz&#x2F;template&#x2F;iso&#x2F;chr-7.13.3.img local</p>
+<p>&#x2F;var&#x2F;lib&#x2F;vz&#x2F;template&#x2F;iso&#x2F;jump78uefi.img</p>
+<p>&#x2F;var&#x2F;lib&#x2F;vz&#x2F;template&#x2F;iso&#x2F;openwrt-23.05.img</p>
+<p>qm importdisk 103 haos_ova-11.5.qcow2 local</p>
+<p>qm importdisk 101 VM110.qcow2 local</p>
+<p><img src="https://s2.loli.net/2024/04/10/FWviHqV5tDImk7A.png" alt="image-20240410231310746"></p>
+<p>然后回到PVE后台，硬件里有一个未使用的硬盘，双击 ——添加——选项——勾选刚才的硬盘</p>
+<p>在控制台启动</p>
+
+        <h2 id="配置："   >
+          <a href="#配置：" class="heading-link"><i class="fas fa-link"></i></a><a href="#配置：" class="headerlink" title="配置："></a>配置：</h2>
+      
+        <h3 id="1、端口转发"   >
+          <a href="#1、端口转发" class="heading-link"><i class="fas fa-link"></i></a><a href="#1、端口转发" class="headerlink" title="1、端口转发"></a>1、端口转发</h3>
+      <p><img src="https://s2.loli.net/2024/04/10/bOZh84eSkfoNmJw.png" alt="image-20240410231502722"></p>
+<p><img src="https://s2.loli.net/2024/04/10/wMs3aGAyXEQW2Cm.png" alt="image-20240410231510695"></p>
+<p><img src="https://s2.loli.net/2024/04/10/EVoGy8IjvaHXW9g.png" alt="image-20240410231520853"></p>
+
+        <h3 id="2、本地回流"   >
+          <a href="#2、本地回流" class="heading-link"><i class="fas fa-link"></i></a><a href="#2、本地回流" class="headerlink" title="2、本地回流"></a>2、本地回流</h3>
+      <p><img src="https://s2.loli.net/2024/04/10/mPALZH9DsVWndO8.png" alt="image-20240410231652743"></p>
+<p><img src="https://s2.loli.net/2024/04/10/9LP1MVxQZzAaHNt.png" alt="image-20240410231703041"></p>
+
+        <h2 id="三、安装OpenWRT"   >
+          <a href="#三、安装OpenWRT" class="heading-link"><i class="fas fa-link"></i></a><a href="#三、安装OpenWRT" class="headerlink" title="三、安装OpenWRT"></a>三、安装OpenWRT</h2>
+      <p>步骤同上，在在shell里如果W键不能输入，关闭浏览器的加速视频播放</p>
+<p>修改IP：vi etc&#x2F;config&#x2F;network</p>
+
+        <h2 id="四、安装homeassistant"   >
+          <a href="#四、安装homeassistant" class="heading-link"><i class="fas fa-link"></i></a><a href="#四、安装homeassistant" class="headerlink" title="四、安装homeassistant"></a>四、安装homeassistant</h2>
+      <p>1、下载地址：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://github.com/home-assistant/operating-system/releases" >https://github.com/home-assistant/operating-system/releases</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>复制下载地址粘贴在导航栏，如果下载慢，可以修改下载地址</p>
+<p><img src="https://s2.loli.net/2024/04/10/pA2aKf9tGni58EL.jpg" alt="img"></p>
+<p>2、安装步骤同ROS</p>
+<p>3、安装完成后，硬盘扩展到32G</p>
+<p><img src="https://s2.loli.net/2024/04/10/bxSguTAaIZofejd.png" alt="image-20240410231811693"></p>
+<p>4、修改硬件中BIOS为EFI</p>
+<p><img src="https://s2.loli.net/2024/04/10/9e14MU5EkZoQRzr.png" alt="image-20240410231831286"></p>
+
+        <h2 id="五、USB口直通："   >
+          <a href="#五、USB口直通：" class="heading-link"><i class="fas fa-link"></i></a><a href="#五、USB口直通：" class="headerlink" title="五、USB口直通："></a>五、USB口直通：</h2>
+      <p><strong>先把USB设备插上</strong></p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">在shell里输入：lsusb -t</span><br><span class="line">lsusb -t</span><br><span class="line">/: Bus 05.Port 1: Dev 1, Class=root_hub, Driver=uhci_hcd/2p, 12M</span><br><span class="line">/: Bus 04.Port 1: Dev 1, Class=root_hub, Driver=uhci_hcd/2p, 12M</span><br><span class="line">/: Bus 03.Port 1: Dev 1, Class=root_hub, Driver=uhci_hcd/2p, 12M</span><br><span class="line">    |__ Port 1: Dev 4, If 0, Class=vend., Driver=usbfs, 1.5M</span><br><span class="line">    |__ Port 2: Dev 5, If 0, Class=vend., Driver=usbfs, 1.5M</span><br><span class="line">/: Bus 02.Port 1: Dev 1, Class=root_hub, Driver=uhci_hcd/2p, 12M</span><br><span class="line">/: Bus 01.Port 1: Dev 1, Class=root_hub, Driver=ehci_hcd/2p, 480M</span><br><span class="line">    |__ Port 1: Dev 2, If 0, Class=hub, Driver=hub/4p, 480M</span><br><span class="line">        |__ Port 3: Dev 5, If 0, Class=comm., Driver=usbfs, 480M</span><br><span class="line">        |__ Port 3: Dev 5, If 1, Class=data, Driver=usbfs, 480M</span><br></pre></td></tr></table></div></figure>
+
+<p>·     示例 1：总线 3，端口 1 &#x3D;&gt; 3-1</p>
+<p>·     示例 2：总线 1、端口 1、端口 3 &#x3D;&gt; 1-1.3</p>
+<p>将设备添加到 VM</p>
+<p>Proxmox 2.x 及更高版本</p>
+<p>编辑 VM 的配置文件 &#x2F;etc&#x2F;pve&#x2F;nodes&#x2F;PVE&#x2F;qemu-server&#x2F;***<VM_ID>*.conf** 并添加以下行：</p>
+<p>·     例：</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usb0: host=3-1.2</span><br></pre></td></tr></table></div></figure>
+
+<p>·     示例 1 和 2：</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">usb0: host=3-1</span><br><span class="line">usb1: host=1-1.3</span><br></pre></td></tr></table></div></figure>
+
+
+
+<p>官方方案<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://pve.proxmox.com/wiki/USB_physical_port_mapping" >USB物理端口映射 - Proxmox VE</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h2 id="六、网口直通"   >
+          <a href="#六、网口直通" class="heading-link"><i class="fas fa-link"></i></a><a href="#六、网口直通" class="headerlink" title="六、网口直通"></a>六、网口直通</h2>
+      <p>参考链接：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.csdn.net/z_johnny/article/details/110913247" >Proxmox VE(PVE) 进行网卡直通_pve查看网卡id-CSDN博客</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h2 id="七、PVE分区调整"   >
+          <a href="#七、PVE分区调整" class="heading-link"><i class="fas fa-link"></i></a><a href="#七、PVE分区调整" class="headerlink" title="七、PVE分区调整"></a>七、PVE分区调整</h2>
+      <p>在PVE的shell内或SSH终端内运行以下命令移除local-lvm对应的逻辑卷.</p>
+<p>lvremove pve&#x2F;data</p>
+<p>接下来运行以下命令对local对应的逻辑卷pve&#x2F;root进行在线扩容.</p>
+<p>lvextend -l +100%FREE -r pve&#x2F;root </p>
+<p>然后在数据中心-存储里删除local-lvm</p>
+<p>如果添加新的磁盘，在磁盘里选择该磁盘，擦除，使用GPT初始化，目录里创建</p>
+
+        <h2 id="八、无网络安装pvestools"   >
+          <a href="#八、无网络安装pvestools" class="heading-link"><i class="fas fa-link"></i></a><a href="#八、无网络安装pvestools" class="headerlink" title="八、无网络安装pvestools"></a>八、无网络安装pvestools</h2>
+      <p>项目地址（GitHub）：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://hub.fastgit.org/ivanhao/pvetools" >https://hub.fastgit.org/ivanhao/pvetools</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>命令行安装：</p>
+<p>用root账号运行</p>
+<p>删除企业源：rm &#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;pve-enterprise.list</p>
+<p>终端中按行执行以下内容：</p>
+<p>export LC_ALL&#x3D;en_US.UTF-8</p>
+<p>apt update &amp;&amp; apt -y install git &amp;&amp; git clone <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://hub.fastgit.org/ivanhao/pvetools.git" >https://hub.fastgit.org/ivanhao/pvetools.git</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>cd pvetools</p>
+<p>.&#x2F;pvetools.sh</p>
+<p>无脑安装：</p>
+<p> echo “nameserver 223.5.5.5” &gt;&gt; &#x2F;etc&#x2F;resolv.conf &amp;&amp; rm &#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;pve-enterprise.list &amp;&amp; export LC_ALL&#x3D;en_US.UTF-8 &amp;&amp; apt update &amp;&amp; apt -y install git &amp;&amp; git clone <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://hub.fastgit.org/ivanhao/pvetools.git" >https://hub.fastgit.org/ivanhao/pvetools.git</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> &amp;&amp; cd pvetools &amp;&amp; .&#x2F;pvetools.sh</p>
+<p>以上无法安装可使用 MobaXterm 连接 PVE 后 将下载并解压好的 pvetools 导入 pve 根目录内 （pvetools 文件 在项目地址里下载）</p>
+<p>运行工具：.&#x2F;pvetools.sh</p>
+<p>如果提示没有权限，输入：chmod +x .&#x2F;*.sh</p>
+<p>查看可直通列表：lspci -nn</p>
+<p>全盘映射指令</p>
+<p>查看硬盘列表 ：ls &#x2F;dev&#x2F;disk&#x2F;by-id</p>
+<p>硬盘映射：qm set 100 -sata1 &#x2F;dev&#x2F;disk&#x2F;by-id&#x2F; （100为虚拟机序号，-sata 支持 0-5 ）</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://liy517.github.io">Yong</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://liy517.github.io/2024/04/10/%E8%BD%AF%E8%B7%AF%E7%94%B1/">https://liy517.github.io/2024/04/10/%E8%BD%AF%E8%B7%AF%E7%94%B1/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liy517.github.io/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/">软路由</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2024/04/06/%E5%86%85%E5%B5%8C%E6%A8%A1%E5%9D%97%E7%9A%84%E4%B8%89%E7%A7%8D%E7%94%A8%E6%B3%95/"><span class="paginator-prev__text">一键断电二种方案</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85WIN10"><span class="toc-number">1.</span> <span class="toc-text">
+          一、安装WIN10</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85ROS"><span class="toc-number">2.</span> <span class="toc-text">
+          二、安装ROS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%EF%BC%9A"><span class="toc-number">2.1.</span> <span class="toc-text">
+          配置：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91"><span class="toc-number">2.1.1.</span> <span class="toc-text">
+          1、端口转发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%9C%AC%E5%9C%B0%E5%9B%9E%E6%B5%81"><span class="toc-number">2.1.2.</span> <span class="toc-text">
+          2、本地回流</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AE%89%E8%A3%85OpenWRT"><span class="toc-number">2.2.</span> <span class="toc-text">
+          三、安装OpenWRT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AE%89%E8%A3%85homeassistant"><span class="toc-number">2.3.</span> <span class="toc-text">
+          四、安装homeassistant</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81USB%E5%8F%A3%E7%9B%B4%E9%80%9A%EF%BC%9A"><span class="toc-number">2.4.</span> <span class="toc-text">
+          五、USB口直通：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E7%BD%91%E5%8F%A3%E7%9B%B4%E9%80%9A"><span class="toc-number">2.5.</span> <span class="toc-text">
+          六、网口直通</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81PVE%E5%88%86%E5%8C%BA%E8%B0%83%E6%95%B4"><span class="toc-number">2.6.</span> <span class="toc-text">
+          七、PVE分区调整</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E6%97%A0%E7%BD%91%E7%BB%9C%E5%AE%89%E8%A3%85pvestools"><span class="toc-number">2.7.</span> <span class="toc-text">
+          八、无网络安装pvestools</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/mtc.png" alt="avatar"></div><p class="sidebar-ov-author__text">Hello Stun</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">3</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">1</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">2</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Yong</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.8.0"></script><script src="/js/stun-boot.js?v=2.8.0"></script><script src="/js/scroll.js?v=2.8.0"></script><script src="/js/header.js?v=2.8.0"></script><script src="/js/sidebar.js?v=2.8.0"></script></body></html>
